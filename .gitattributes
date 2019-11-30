@@ -1,5 +1,5 @@
 * text=auto
-*.html linguist-language=PHP
+*.html linguist-language=JAVA
 *.css linguist-vendored
 *.scss linguist-vendored
 *.js linguist-vendored
