@@ -12,29 +12,53 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        Product::create([
-            'name' => 'MacBook-Pro',
-            'slug' => 'MacBook-Pro',
-            'details' => '15 inch, 1TB ssd, 32GB RAM',
-            'price' => 15999.99,
-            'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
-        ]);
+        //laptops
+        for($i=0; $i<10; $i++)
+        {
+            Product::create([
+                'name' => 'Laptop'.$i,
+                'slug' => 'laptop'.$i,
+                'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
+                'price' => rand(14999, 24999),
+                'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
+            ])->categories()->attach(1);
+        }
 
-        Product::create([
-            'name' => 'MacBook-2',
-            'slug' => 'macbook-2',
-            'details' => '15 inch, 1TB ssd, 32GB RAM',
-            'price' => 15999.99,
-            'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
-        ]);
+        //Desktops 
+        for($i=0; $i<10; $i++)
+        {
+            Product::create([
+                'name' => 'Desktop'.$i,
+                'slug' => 'desktop'.$i,
+                'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
+                'price' => rand(14999, 24999),
+                'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
+            ])->categories()->attach(2);
+        }
 
-        Product::create([
-            'name' => 'MacBook-9',
-            'slug' => 'macbook-9',
-            'details' => '15 inch, 1TB ssd, 32GB RAM',
-            'price' => 15999.99,
-            'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
-        ]);
+        //Cameras
+        for($i=0; $i<10; $i++)
+        {
+            Product::create([
+                'name' => 'Camera'.$i,
+                'slug' => 'camera'.$i,
+                'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
+                'price' => rand(14999, 24999),
+                'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
+            ])->categories()->attach(3);
+        }
+
+        //Tvs
+        for($i=0; $i<10; $i++)
+        {
+            Product::create([
+                'name' => 'Tv'.$i,
+                'slug' => 'tv'.$i,
+                'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
+                'price' => rand(14999, 24999),
+                'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
+            ])->categories()->attach(4);
+        }
 
     }
 }
