@@ -172,11 +172,9 @@
             <div class="aa-sidebar-widget">
               <h3>Category</h3>
               <ul class="aa-catg-nav">
-                <li><a href="#">Men</a></li>
-                <li><a href="">Women</a></li>
-                <li><a href="">Kids</a></li>
-                <li><a href="">Electornics</a></li>
-                <li><a href="">Sports</a></li>
+                @foreach($categories as $category)
+                <li><a href="{{route('shop.showByCategory', $category->slug)}}">{{$category->name}}</a></li>
+                @endforeach
               </ul>
             </div>
             <!-- single sidebar -->

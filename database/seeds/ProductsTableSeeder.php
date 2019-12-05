@@ -24,6 +24,9 @@ class ProductsTableSeeder extends Seeder
             ])->categories()->attach(1);
         }
 
+        $product = Product::find(1);
+        $product->categories()->attach(5);
+
         //Desktops 
         for($i=0; $i<10; $i++)
         {
@@ -35,6 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
             ])->categories()->attach(2);
         }
+
 
         //Cameras
         for($i=0; $i<10; $i++)
@@ -59,6 +63,5 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
             ])->categories()->attach(4);
         }
-
     }
 }
