@@ -30,6 +30,9 @@ Products
                   <option value="3">36</option>
                 </select>
               </form>
+              <strong style="margin-left:20px;">Filter: </strong>
+              <a href="{{route('shop.index', ['category' => request()->category, 'sort' => 'low_high'  ])}}" onMouseOver="this.style.color='#8a2be2'" onMouseOut="this.style.color='#333333'">Low To High</a>|
+              <a href="{{route('shop.index', ['category' => request()->category, 'sort' => 'high_low'  ])}}" onMouseOver="this.style.color='#8a2be2'" onMouseOut="this.style.color='#333333'">High To Low</a>
             </div>
             <div class="aa-product-catg-head-right">
               <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
@@ -198,7 +201,7 @@ Products
                 </div>
                 <span id="skip-value-lower" class="example-val">30.00</span>
                 <span id="skip-value-upper" class="example-val">100.00</span>
-                <button class="aa-filter-btn" type="submit">Filter</button>
+                <a href="" class="btn btn-secondary" style="color:white; background:#8a2be2;">Click me</a>
               </form>
             </div>
 

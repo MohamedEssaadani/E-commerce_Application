@@ -31,13 +31,23 @@ class ShopController extends Controller
             $products   = Product::inRandomOrder()->take(12)->get();
             $categories = categoriesList();
         }
+
+        if (request()->sort == 'low_high')
+        { 
+            $products = $products->sortBy('price');
+
+        } else if (request()->sort == 'high_low')
+        {
+            $products = $products->sortByDesc('price');
+        }
+
         
         return view('shop')->with(
-            [
-                'products' => $products,
-                'categories' => $categories
-            ]
-        );
+                [
+                    'products' => $products,
+                    'categories' => $categories
+                ]
+            );
     }
 
     /**
