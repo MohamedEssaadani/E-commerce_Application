@@ -13,10 +13,21 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /*
+      
+    */
     public function index()
     {
-        $products   = Product::inRandomOrder()->take(12)->get();
-        $categories = Category::all();
+        if (request()->category) {
+            $products = Product::with('categories')
+                ->whereHas('categories', function ($query) {
+                    $query->where('slug', request()->category);
+                })->get();
+            $categories = categoriesList();
+        } else {
+            $products   = Product::inRandomOrder()->take(12)->get();
+            $categories = categoriesList();
+        }
 
         return view('shop')->with(
             [
@@ -68,16 +79,6 @@ class ShopController extends Controller
         ]);
     }
 
-    public function showByCategory($category)
-    {
-        /*$products = Product::inRandomOrder()
-        ->take(12)
-        ->join('Category', '')
-        ->get();
-        
-        return view('shop')->with('products', $products);
-        */
-    }
 
     /**
      * Show the form for editing the specified resource.

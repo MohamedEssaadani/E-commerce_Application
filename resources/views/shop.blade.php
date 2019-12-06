@@ -173,7 +173,7 @@
               <h3>Category</h3>
               <ul class="aa-catg-nav">
                 @foreach($categories as $category)
-                <li><a href="{{route('shop.showByCategory', $category->slug)}}">{{$category->name}}</a></li>
+                <li><a href="{{route('shop.index', ['category' => $category->slug])}}">{{$category->name}}</a></li>
                 @endforeach
               </ul>
             </div>

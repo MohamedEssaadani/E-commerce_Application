@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
         }
 
         $product = Product::find(1);
-        $product->categories()->attach(5);
+        $product->categories()->attach(3);
 
         //Desktops 
         for($i=0; $i<10; $i++)
@@ -49,7 +49,7 @@ class ProductsTableSeeder extends Seeder
                 'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
                 'price' => rand(14999, 24999),
                 'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
-            ])->categories()->attach(3);
+            ])->categories()->attach(4);
         }
 
         //Tvs
@@ -61,7 +61,7 @@ class ProductsTableSeeder extends Seeder
                 'details' => [13, 14, 15][array_rand([13, 14, 15])].' inch,'.[1, 2, 3][array_rand([1, 2, 3])].'TB ssd, 32GB RAM',
                 'price' => rand(14999, 24999),
                 'description' => 'Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac'
-            ])->categories()->attach(4);
+            ])->categories()->attach(5);
         }
     }
 }
