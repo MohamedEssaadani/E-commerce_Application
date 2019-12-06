@@ -18,17 +18,20 @@ class ShopController extends Controller
     */
     public function index()
     {
+        //check if the get request has an argument to show products by categories
         if (request()->category) {
+            //show products by category based on slug
             $products = Product::with('categories')
                 ->whereHas('categories', function ($query) {
                     $query->where('slug', request()->category);
                 })->get();
             $categories = categoriesList();
         } else {
+            //show products randomly (user didn't choose to see products by category)
             $products   = Product::inRandomOrder()->take(12)->get();
             $categories = categoriesList();
         }
-
+        
         return view('shop')->with(
             [
                 'products' => $products,
