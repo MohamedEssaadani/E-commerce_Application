@@ -24,14 +24,17 @@ function getProducts($category = null)
     $products = Product::with('categories')
       ->whereHas('categories', function ($query) {
         $query->where('slug', request()->category);
-      })->get();
+      })
+      ->paginate(12);
   } else {
     //show products randomly (user didn't choose to see products by category)
-    $products   = Product::inRandomOrder()->take(12)->get();
+    $products = Product::inRandomOrder()->take(12)->paginate(12);
   }
 
   return $products;
 }
+
+
 function sortProducts($products, $sortWay)
 {
   if ($sortWay == 'low_high') {
