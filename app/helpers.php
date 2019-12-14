@@ -24,11 +24,10 @@ function getProducts($category = null)
     $products = Product::with('categories')
       ->whereHas('categories', function ($query) {
         $query->where('slug', request()->category);
-      })
-      ->paginate(12);
+      });
   } else {
     //show products randomly (user didn't choose to see products by category)
-    $products = Product::inRandomOrder()->take(12)->paginate(12);
+    $products = Product::take(12);
   }
 
   return $products;
@@ -37,11 +36,16 @@ function getProducts($category = null)
 
 function sortProducts($products, $sortWay)
 {
+  $pagination = 9;
+
   if ($sortWay == 'low_high') {
-    $products = $products->sortBy('price');
+    $products = $products->orderBy('price')->paginate($pagination);
   } else if ($sortWay == 'high_low') {
-    $products = $products->sortByDesc('price');
+    $products = $products->orderBy('price', 'desc')->paginate($pagination);
+  } else {
+    $products = $products->paginate($pagination);
   }
 
   return $products;
 }
+

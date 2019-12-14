@@ -1822,6 +1822,11 @@ img {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+
+#aa-product-category .aa-sidebar .aa-sidebar-widget .aa-catg-nav li a.active {
+  color:blueviolet;
+}
+
 #aa-product-category .aa-sidebar .aa-sidebar-widget .tag-cloud {
   display: block;
 }
