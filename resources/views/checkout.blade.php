@@ -13,19 +13,19 @@ Checkout
 <section id="checkout">
   <div class="container">
     @if(session()->has('success_message'))
-      <div class="alert alert-success">
-          {{session()->get('success_message')}}
-      </div>
+    <div class="alert alert-success">
+      {{session()->get('success_message')}}
+    </div>
     @endif
 
     @if(count($errors) > 0)
-      <div class="alert alert-danger">
-          <ul>
-              @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      </div>
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
     @endif
 
     <div class="row">
@@ -37,22 +37,6 @@ Checkout
               <div class="col-md-8">
                 <div class="checkout-left">
                   <div class="panel-group" id="accordion">
-                    <!-- Coupon section -->
-                    <div class="panel panel-default aa-checkout-coupon">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                            Have a Coupon?
-                          </a>
-                        </h4>
-                      </div>
-                      <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
-                          <input type="submit" value="Apply Coupon" class="aa-browse-btn">
-                        </div>
-                      </div>
-                    </div>
                     <!-- Login section -->
                     <div class="panel panel-default aa-checkout-login">
                       <div class="panel-heading">
@@ -113,7 +97,7 @@ Checkout
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <textarea id="address" name="address" value="{{old('address')}} cols="8" rows="3" required>Address*</textarea>
+                                <textarea id="address" name="address" value="{{old('address')}} cols=" 8" rows="3" required>Address*</textarea>
                               </div>
                             </div>
                           </div>
@@ -307,10 +291,10 @@ Checkout
                       </thead>
                       <tbody>
                         @foreach(Cart::content() as $item)
-                          <tr>
-                            <td>{{$item->model->name}} <strong> x 1</strong></td>
-                            <td>{{$item->model->price}}</td>
-                          </tr>
+                        <tr>
+                          <td>{{$item->model->name}} <strong> x 1</strong></td>
+                          <td>{{$item->model->price}}</td>
+                        </tr>
                         @endforeach
                       </tbody>
                       <tfoot>
@@ -340,6 +324,32 @@ Checkout
               </div>
             </div>
           </form>
+
+          <!-- Coupon section -->
+          <div class="col-md-4" style="float:right; margin-right:-15px; margin-top:10px; width:390px;">
+            <div class="checkout-left">
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default aa-checkout-coupon">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Have a Coupon?
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <form action="{{route('coupon.store')}}" method="POST">
+                        {{ csrf_field() }}
+                        <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
+                        <input type="submit" value="Apply Coupon" class="aa-browse-btn">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -351,7 +361,7 @@ Checkout
 @section('extra-js')
 <script>
   (function() {
-   
+
     // Create a Stripe client.
     var stripe = Stripe('pk_test_Z1Lok7G4QSCFIqcHmvHFZyhs00CWrCEym9');
 
@@ -375,7 +385,7 @@ Checkout
         iconColor: '#fa755a'
       }
     };
-    
+
     // Create an instance of the card Element.
     var card = elements.create('card', {
       style: style,
@@ -384,7 +394,7 @@ Checkout
 
     // Add an instance of the card Element into the `card-element` <div>.
     card.mount('#card-element');
-   
+
 
     // Handle real-time validation errors from the card Element.
     card.addEventListener('change', function(event) {
@@ -395,16 +405,16 @@ Checkout
         displayError.textContent = '';
       }
     });
-    
+
 
     // Handle form submission.
     var form = document.getElementById('payment-form');
     form.addEventListener('submit', function(event) {
       event.preventDefault();
 
-    //disable submit button to prevent repeated clicks
-    document.getElementById('submit-order').disable = true;
-      
+      //disable submit button to prevent repeated clicks
+      document.getElementById('submit-order').disable = true;
+
       stripe.createToken(card).then(function(result) {
         if (result.error) {
           // Inform the user if there was an error.
