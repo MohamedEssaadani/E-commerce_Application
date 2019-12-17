@@ -315,8 +315,8 @@ Checkout
                   </div>
                   <h4>Payment Method</h4>
                   <div class="aa-payment-method">
-                    <label for="creditcard"><input type="radio" id="creditcard" name="optionsRadios"> Credit Card </label>
-                    <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" checked> Via Paypal </label>
+                    <label for="creditcard"><input type="radio" id="creditcard" name="optionsRadios" checked> Credit Card </label>
+                    <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" > Via Paypal </label>
                     <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">
                     <input type="submit" id="submit-order" value="Place Order" class="aa-browse-btn">
                   </div>
