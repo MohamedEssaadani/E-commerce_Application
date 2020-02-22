@@ -115,7 +115,7 @@
               <!-- Tab panes -->
               <div class="tab-content">
                 <div class="tab-pane fade in active" id="description">
-                  <p>{{$product->description}}</p>
+                  <p>{!!$product->description!!}</p>
                   <ul>
                     <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, culpa!</li>
                     <li>Lorem ipsum dolor sit amet.</li>
