@@ -66,7 +66,7 @@ Cart
                             <fa class="fa fa-close"></fa>
                           </button>
                         </form>
-                      <td><a href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('../assets/img/productsImages/'.$item->model->slug.'.jpg')}}" alt="img"></a></td>
+                      <td><a href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('storage/'.$item->model->image)}}" alt="img"></a></td>
                       <td><a class="aa-cart-title" href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
                       <td>${{$item->model->price}}</td>
                       <td><input class="aa-cart-quantity quantity" type="number" value="{{$item->qty}}" data-id="{{$item->rowId}}"></td>

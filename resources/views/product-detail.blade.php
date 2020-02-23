@@ -36,18 +36,16 @@
                   <div class="aa-product-view-slider">                                
                     <div id="demo-1" class="simpleLens-gallery-container">
                       <div class="simpleLens-container">
-                        <div class="simpleLens-big-image-container"><a data-lens-image="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" class="simpleLens-lens-image"><img src="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" class="simpleLens-big-image"></a></div>
+                        <div class="simpleLens-big-image-container"><a data-lens-image="{{productImage($product->image)}}" class="simpleLens-lens-image"><img src="{{asset('storage/'.$product->image)}}" class="simpleLens-big-image"></a></div>
                       </div>
                       <div class="simpleLens-thumbnails-container">
-                          <a data-big-image="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png" class="simpleLens-thumbnail-wrapper" href="#">
-                            <img src="../assets/img/view-slider/thumbnail/polo-shirt-1.png">
-                          </a>                                    
-                          <a data-big-image="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" data-lens-image="../assets/img/view-slider/large/polo-shirt-3.png" class="simpleLens-thumbnail-wrapper" href="#">
-                          <img src="../assets/img/view-slider/thumbnail/polo-shirt-4.png">
-                          </a>
-                          <a data-big-image="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" data-lens-image="../assets/img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper" href="#">
-                            <img src="../assets/img/view-slider/thumbnail/polo-shirt-4.png">
-                          </a>
+                        @if($product->images)
+                           @foreach(json_decode($product->images) as $image)
+                              <a data-big-image="{{productImage($product->image)}}" data-lens-image="{{productImage($product->image)}}" class="simpleLens-thumbnail-wrapper" href="#">
+                                <img src="{{productImage($image)}}">
+                              </a>                                    
+                            @endforeach
+                        @endif
                       </div>
                     </div>
                   </div>

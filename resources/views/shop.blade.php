@@ -45,7 +45,7 @@ Products
               @forelse($products as $product)
               <li>
                 <figure>
-                  <a class="aa-product-img" href="{{route('shop.show', $product->slug)}}"><img src="{{asset('../assets/img/productsImages/'.$product->slug.'.jpg')}}" alt="polo shirt img"></a>
+                  <a class="aa-product-img" href="{{route('shop.show', $product->slug)}}"><img src="{{productImage($product->image)}}" alt="polo shirt img"></a>
                   <a class="aa-add-card-btn" href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                   <figcaption>
                     <h4 class="aa-product-title"><a href="{{route('shop.show', $product->slug)}}">{{$product->name}}</a></h4>

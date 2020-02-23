@@ -49,3 +49,7 @@ function sortProducts($products, $sortWay)
   return $products;
 }
 
+function productImage($path)
+{
+  return file_exists('storage/'.$path) ? asset('storage/'.$path) : asset('assets/img/imagenotfound.jpg');
+}

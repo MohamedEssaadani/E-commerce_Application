@@ -202,14 +202,7 @@
           </div>
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
-            <ul class="nav navbar-nav">
-              <li><a href="{{route('landingPage')}}">Home</a></li>
-              <li><a href="{{route('shop.index')}}">Shop</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="{{route('cart.index')}}">Cart</a></li>
-              <li><a href="">About</a></li>             
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
+            {{menu('main', 'partials.menus.main')}}
           </div><!--/.nav-collapse -->
         </div>
       </div>       
