@@ -1,0 +1,7 @@
+                        @if($product->images)
+                           @foreach(json_decode($product->images) as $image)
+                              <a data-big-image="{{productImage($product->image)}}" data-lens-image="{{productImage($product->image)}}" class="simpleLens-thumbnail-wrapper" href="#">
+                                <img src="{{productImage($image)}}">
+                              </a>                                    
+                            @endforeach
+                        @endif
