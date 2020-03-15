@@ -23,14 +23,24 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
+        //check email, if user already exist so show error
+        //email must be required & unique 
+        $emailValidation = auth()->user() ? 'required|email' : 'required|email|unique:users';
         return [
-            'email' => 'required|email',
+            'email' => $emailValidation,
             'name' => 'required',
             'address' => 'required',
             'city' => 'required',
             'province' => 'required',
             'postalcode' => 'required',
             'phone' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.unique' => 'You have already an account with this email, Please <a href="/login">login</a> to continue..',
         ];
     }
 }

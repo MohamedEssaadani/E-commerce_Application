@@ -22,7 +22,7 @@ Checkout
     <div class="alert alert-danger">
       <ul>
         @foreach($errors->all() as $error)
-        <li>{{ $error }}</li>
+        <li>{!! $error !!}</li>
         @endforeach
       </ul>
     </div>
@@ -84,8 +84,11 @@ Checkout
                           <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <!--<input type="email" id="email" name="email" placeholder="Email Address*" value="{{old('email')}}" required>-->
-                                <input type="email" id="email" name="email" placeholder="Email Address*" value="{{auth()->user()->email}}" readonly>
+                                @if (auth()->user())
+                                  <input type="email" id="email" name="email" placeholder="Email Address*" value="{{auth()->user()->email}}" readonly>
+                                @else
+                                  <input type="email" id="email" name="email" placeholder="Email Address*" value="{{old('email')}}" required>
+                                @endif                                                                
                               </div>
                             </div>
                             <div class="col-md-6">
