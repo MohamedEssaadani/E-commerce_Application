@@ -2,6 +2,7 @@
 
 use App\Product;
 use App\Category;
+use App\CategoryProduct;
 
 function presentPrice($price)
 {
@@ -51,5 +52,5 @@ function sortProducts($products, $sortWay)
 
 function productImage($path)
 {
-  return file_exists('storage/'.$path) ? asset('storage/'.$path) : asset('assets/img/imagenotfound.jpg');
+  return file_exists('storage/' . $path) ? asset('storage/' . $path) : asset('assets/img/imagenotfound.jpg');
 }
