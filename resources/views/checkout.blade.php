@@ -38,24 +38,24 @@ Checkout
                 <div class="checkout-left">
                   <div class="panel-group" id="accordion">
                     <!-- Coupon section -->
-                          <div class="panel panel-default aa-checkout-coupon">
-                            <div class="panel-heading">
-                              <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                  Have a Coupon?
-                                </a>
-                              </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse ">
-                              <div class="panel-body">
-                                <form action="{{route('coupon.store')}}" method="POST">
-                                  {{ csrf_field() }}
-                                  <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
-                                  <input type="submit" value="Apply Coupon" class="aa-browse-btn">
-                                </form>
-                              </div>
-                            </div>
+                    <div class="panel panel-default aa-checkout-coupon">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Have a Coupon?
+                          </a>
+                        </h4>
                       </div>
+                      <div id="collapseOne" class="panel-collapse collapse ">
+                        <div class="panel-body">
+                          <form action="{{route('coupon.store')}}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
+                            <input type="submit" value="Apply Coupon" class="aa-browse-btn">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                     <!-- Billing Details -->
                     <div class="panel panel-default aa-checkout-billaddress">
                       <div class="panel-heading">
@@ -70,25 +70,23 @@ Checkout
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" id="name" name="name" placeholder="Full Name*" value="{{old('name_on_card')}}" required>
+                                <input type="text" id="name" name="name" placeholder="Full Name*"
+                                  value="{{old('name')}}" required>
                               </div>
                             </div>
                           </div>
                           <div class="row">
-                            <div class="col-md-12">
-                              <div class="aa-checkout-single-bill">
-                                <input type="text" placeholder="Company name">
-                              </div>
-                            </div>
                           </div>
                           <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
                                 @if (auth()->user())
-                                  <input type="email" id="email" name="email" placeholder="Email Address*" value="{{auth()->user()->email}}" readonly>
+                                <input type="email" id="email" name="email" placeholder="Email Address*"
+                                  value="{{auth()->user()->email}}" readonly>
                                 @else
-                                  <input type="email" id="email" name="email" placeholder="Email Address*" value="{{old('email')}}" required>
-                                @endif                                                                
+                                <input type="email" id="email" name="email" placeholder="Email Address*"
+                                  value="{{old('email')}}" required>
+                                @endif
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -100,32 +98,8 @@ Checkout
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <textarea id="address" name="address" value="{{old('address')}} cols=" 8" rows="3" required>Address*</textarea>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="aa-checkout-single-bill">
-                                <select>
-                                  <option value="0">Select Your Country</option>
-                                  <option value="1">Australia</option>
-                                  <option value="2">Afganistan</option>
-                                  <option value="3">Bangladesh</option>
-                                  <option value="4">Belgium</option>
-                                  <option value="5">Brazil</option>
-                                  <option value="6">Canada</option>
-                                  <option value="7">China</option>
-                                  <option value="8">Denmark</option>
-                                  <option value="9">Egypt</option>
-                                  <option value="10">India</option>
-                                  <option value="11">Iran</option>
-                                  <option value="12">Israel</option>
-                                  <option value="13">Mexico</option>
-                                  <option value="14">UAE</option>
-                                  <option value="15">UK</option>
-                                  <option value="16">USA</option>
-                                </select>
+                                <textarea id="address" name="address" value="{{old('address')}} cols=" 8" rows="3"
+                                  required>Address*</textarea>
                               </div>
                             </div>
                           </div>
@@ -137,14 +111,14 @@ Checkout
                             </div>
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" name="city" id="city" value="{{old('city')}} " placeholder="City / Town*" required>
+                                <input type="text" name="city" id="city" placeholder="City / Town*" required>
                               </div>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="text" name="province" placeholder="State*">
+                                <input type="text" name="province" placeholder="Province*">
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -154,6 +128,12 @@ Checkout
                             </div>
                           </div>
                           <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" id="name_on_card" name="name_on_card" placeholder="Name On Card*"
+                                  value="{{old('name_on_card')}}" required>
+                              </div>
+                            </div>
                             <div class="col-md-12">
                               <label for="card-element">
                                 Credit or debit card
@@ -210,9 +190,11 @@ Checkout
                   </div>
                   <h4>Payment Method</h4>
                   <div class="aa-payment-method">
-                    <label for="creditcard"><input type="radio" id="creditcard" name="optionsRadios" checked> Credit Card </label>
+                    <label for="creditcard"><input type="radio" id="creditcard" name="optionsRadios" checked> Credit
+                      Card </label>
                     <label for="paypal"><input type="radio" id="paypal" name="optionsRadios"> Via Paypal </label>
-                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0"
+                      alt="PayPal Acceptance Mark">
                     <input type="submit" id="submit-order" value="Place Order" class="aa-browse-btn">
                   </div>
                 </div>

@@ -34,7 +34,7 @@ Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
 Route::get('/guestCheckout', 'CheckoutController@index')->name('guestCheckout.index');
 
-Route::view('/thankyou','thankyou');
+Route::view('/thankyou', 'thankyou');
 
 Auth::routes();
 

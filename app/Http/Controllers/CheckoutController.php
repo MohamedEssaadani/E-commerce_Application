@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\OrderProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -38,11 +40,11 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
-        $contents = Cart::content()->map(function($item){
-            return $item->model->slug.', '.$item->qty;
+        $contents = Cart::content()->map(function ($item) {
+            return $item->model->slug . ', ' . $item->qty;
         })->values()->toJson();
 
-        try{
+        try {
             $charge = Stripe::charges()->create([
                 'amount'        => Cart::total(),
                 'currency'      => 'usd',
@@ -50,19 +52,21 @@ class CheckoutController extends Controller
                 'description'   => 'Order',
                 'receipt_email' => $request->email,
                 'metadata'      => [
-                        //change to Order ID after we start using DB
-                        'contents' => $contents, 
-                        'quantity' => Cart::instance('default')->count(),
+                    //change to Order ID after we start using DB
+                    'contents' => $contents,
+                    'quantity' => Cart::instance('default')->count(),
                 ],
             ]);
+
+            //Insert To Orders & Order_Product Tables
+            $this->saveOrders($request, null);
 
             //SUCCESSFUL
             Cart::instance('default')->destroy();
             return back()->with('success_message', 'Thank you!! your payment has been successfully accepted!!');
-        
-        }catch(CardErrorException $e)
-        {
-            return back()->withErrors('Error! '. $e->getMessage());
+        } catch (CardErrorException $e) {
+            $this->saveOrders($request, $e->getMessage());
+            return back()->withErrors('Error! ' . $e->getMessage());
         }
     }
 
@@ -109,5 +113,57 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //Save To Orders & Order Product Tables
+    private function saveOrders($request, $error)
+    {
+        //Insert to orders table
+        $order = Order::create([
+            'user_id' => auth()->user() ? auth()->user()->id : null,
+            'billing_email' => $request->email,
+            'billing_name' => $request->name,
+            'billing_address' => $request->address,
+            'billing_city' => $request->city,
+            'billing_province' => $request->province,
+            'billing_postalCode' => $request->postalcode,
+            'billing_phone' => $request->phone,
+            'billing_name_on_card' => $request->name_on_card,
+            'billing_discount' => $this->getNumbers()->get('discount'),
+            'billing_discount_code' => $this->getNumbers()->get('code'),
+            'billing_subtotal' => $this->getNumbers()->get('newSubtotal'),
+            'billing_tax' => $this->getNumbers()->get('newTax'),
+            'billing_total' => $this->getNumbers()->get('newTotal'),
+            'error' => null
+        ]);
+
+        //Insert into Order_Product Table
+        foreach (Cart::content() as $item) {
+            OrderProduct::create([
+                'order_id' => $order->id,
+                'product_id' => $item->model->id,
+                'quantity' => $item->qty
+            ]);
+        }
+    }
+
+    //Return Card Informations
+    private function getNumbers()
+    {
+        $tax = config('cart.tax');
+        $discount = session()->get('coupon')['discount'] ?? 0;
+        $code = session()->get('coupon')['name'] ?? null;
+        $newSubtotal = (Cart::subtotal() - $discount);
+        $newTax = $newSubtotal + $tax;
+        $newTotal = $newSubtotal * (1 + $tax);
+
+        return Collect([
+            'tax' => $tax,
+            'discount' => $discount,
+            'code' => $code,
+            'newSubtotal' => $newSubtotal,
+            'newTax' => $newTax,
+            'newTotal' => $newTotal
+        ]);
     }
 }
