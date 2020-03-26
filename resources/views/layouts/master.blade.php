@@ -70,7 +70,8 @@
                 <!-- start language -->
                 <div class="aa-language">
                   <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="true">
                       <img src="../assets/img/flag/english.jpg" alt="english flag">ENGLISH
                       <span class="caret"></span>
                     </a>
@@ -85,7 +86,8 @@
                 <!-- start currency -->
                 <div class="aa-currency">
                   <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="true">
                       <i class="fa fa-usd"></i>USD
                       <span class="caret"></span>
                     </a>
@@ -120,7 +122,8 @@
                   @endif
                   @else
                   <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                       {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
@@ -130,12 +133,12 @@
                         {{ __('Logout') }}
                       </a>
 
-                    
+
                     </div>
                   </li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                      </form>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
                   @endguest
                 </ul>
               </div>
@@ -177,7 +180,8 @@
                   <ul>
                     @foreach(Cart::content() as $item)
                     <li>
-                      <a class="aa-cartbox-img" href="#"><img src="{{asset('../assets/img/productsImages/'.$item->model->slug.'.jpg')}}" alt="img"></a>
+                      <a class="aa-cartbox-img" href="#"><img
+                          src="{{asset('../assets/img/productsImages/'.$item->model->slug.'.jpg')}}" alt="img"></a>
                       <div class="aa-cartbox-info">
                         <h4><a href="#">{{$item->model->nale}}</a></h4>
                         <p>{{$item->qty}} x <?php echo '$' . $item->model->price ?></p>
@@ -201,8 +205,9 @@
               <!-- / cart box -->
               <!-- search box -->
               <div class="aa-search-box">
-                <form action="">
-                  <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                <form action="{{route('search')}}" method="GET">
+                  <input type="text" name="query" id="query" value="{{request()->input('query')}}"
+                    placeholder="Search here ex. 'iPhone' ">
                   <button type="submit"><span class="fa fa-search"></span></button>
                 </form>
               </div>
@@ -338,7 +343,8 @@
   <!-- / footer -->
 
   <!-- Login Modal -->
-  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">

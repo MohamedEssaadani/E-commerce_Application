@@ -115,4 +115,22 @@ class ShopController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+        //Query must has at least 3 characters
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+
+        //Get products that contains characters of the query 
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'like', "%$query%")
+            ->orWhere('name', 'like', "%$query%")
+            ->orWhere('description', 'like', "%$query%")
+            ->paginate(6);
+
+        return view('search-results')->with('products', $products);
+    }
 }

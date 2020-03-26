@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderProduct;
+use App\Mail\OrderPlaced;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -59,7 +61,10 @@ class CheckoutController extends Controller
             ]);
 
             //Insert To Orders & Order_Product Tables
-            $this->saveOrders($request, null);
+            $order = $this->saveOrders($request, null);
+
+            //Send Mail
+            Mail::send(new OrderPlaced($order));
 
             //SUCCESSFUL
             Cart::instance('default')->destroy();
@@ -145,6 +150,8 @@ class CheckoutController extends Controller
                 'quantity' => $item->qty
             ]);
         }
+
+        return $order;
     }
 
     //Return Card Informations

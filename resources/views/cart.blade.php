@@ -66,10 +66,13 @@ Cart
                             <fa class="fa fa-close"></fa>
                           </button>
                         </form>
-                      <td><a href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('storage/'.$item->model->image)}}" alt="img"></a></td>
-                      <td><a class="aa-cart-title" href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
+                      <td><a href="{{route('shop.show', $item->model->slug)}}"><img
+                            src="{{asset('storage/'.$item->model->image)}}" alt="img"></a></td>
+                      <td><a class="aa-cart-title"
+                          href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
                       <td>${{$item->model->price}}</td>
-                      <td><input class="aa-cart-quantity quantity" type="number" value="{{$item->qty}}" data-id="{{$item->rowId}}"></td>
+                      <td><input class="aa-cart-quantity quantity" type="number" value="{{$item->qty}}"
+                          data-id="{{$item->rowId}}"></td>
                       <td>${{$item->subTotal()}}</td>
                     </tr>
                     @endforeach
@@ -134,20 +137,28 @@ Cart
       @foreach(Cart::instance('saveForLater')->content() as $item)
       <li>
         <figure>
-          <a class="aa-product-img" href="{{route('shop.show', $item->model->slug)}}"><img src="{{asset('../assets/img/productsImages/'.$item->model->slug.'.jpg')}}" alt="polo shirt img"></a>
+          <a class="aa-product-img" href="{{route('shop.show', $item->model->slug)}}"><img
+              src="{{asset('../assets/img/productsImages/'.$item->model->slug.'.jpg')}}" alt="polo shirt img"></a>
           <form id="my_form" action="{{route('saveForLater.switchToCart', $item->rowId)}}" method="POST">
             {{csrf_field()}}
-            <a class="aa-add-card-btn" href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;"><span class="fa fa-shopping-cart"></span>Move To Cart</a>
+            <a class="aa-add-card-btn" href="javascript:{}"
+              onclick="document.getElementById('my_form').submit(); return false;"><span
+                class="fa fa-shopping-cart"></span>Move To Cart</a>
           </form>
           <figcaption>
-            <h4 class="aa-product-title"><a href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></h4>
-            <span class="aa-product-price">{{presentPrice($item->model->price)}}</span><span class="aa-product-price"><del>{{presentPrice($item->model->price*2)}}</del></span>
+            <h4 class="aa-product-title"><a href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a>
+            </h4>
+            <span class="aa-product-price">{{presentPrice($item->model->price)}}</span><span
+              class="aa-product-price"><del>{{presentPrice($item->model->price*2)}}</del></span>
           </figcaption>
         </figure>
         <div class="aa-product-hvr-content">
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-          <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span
+              class="fa fa-heart-o"></span></a>
+          <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span
+              class="fa fa-exchange"></span></a>
+          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal"
+            data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
         </div>
         <!-- product badge -->
         <form action="{{route('saveForLater.destroy', $item->rowId)}}" method="POST">
@@ -161,7 +172,8 @@ Cart
       @endforeach
     </ul>
     <!-- quick view modal -->
-    <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
@@ -173,20 +185,27 @@ Cart
                   <div class="simpleLens-gallery-container" id="demo-1">
                     <div class="simpleLens-container">
                       <div class="simpleLens-big-image-container">
-                        <a class="simpleLens-lens-image" data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png">
+                        <a class="simpleLens-lens-image"
+                          data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png">
                           <img src="../assets/img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
                         </a>
                       </div>
                     </div>
                     <div class="simpleLens-thumbnails-container">
-                      <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png" data-big-image="../assets/img/view-slider/medium/polo-shirt-1.png">
+                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                        data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png"
+                        data-big-image="../assets/img/view-slider/medium/polo-shirt-1.png">
                         <img src="../assets/img/view-slider/thumbnail/polo-shirt-1.png">
                       </a>
-                      <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png" data-big-image="../assets/img/view-slider/medium/polo-shirt-1.png">
+                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                        data-lens-image="../assets/img/view-slider/large/polo-shirt-1.png"
+                        data-big-image="../assets/img/view-slider/medium/polo-shirt-1.png">
                         <img src="../assets/img/view-slider/thumbnail/polo-shirt-1.png">
                       </a>
 
-                      <a href="#" class="simpleLens-thumbnail-wrapper" data-lens-image="../assets/img/view-slider/large/polo-shirt-4.png" data-big-image="../assets/img/view-slider/medium/polo-shirt-4.png">
+                      <a href="#" class="simpleLens-thumbnail-wrapper"
+                        data-lens-image="../assets/img/view-slider/large/polo-shirt-4.png"
+                        data-big-image="../assets/img/view-slider/medium/polo-shirt-4.png">
                         <img src="../assets/img/view-slider/thumbnail/polo-shirt-4.png">
                       </a>
                     </div>
@@ -201,7 +220,8 @@ Cart
                     <span class="aa-product-view-price">$34.99</span>
                     <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae
+                    repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
                   <h4>Size</h4>
                   <div class="aa-prod-view-size">
                     <a href="#">S</a>

@@ -26,6 +26,23 @@
 <!-- product category -->
 <section id="aa-product-details">
   <div class="container">
+    <div class="container">
+      @if(session()->has('success_message'))
+      <div class="alert alert-success">
+        {{session()->get('success_message')}}
+      </div>
+      @endif
+
+      @if(count($errors) > 0)
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $error)
+          <li>{{$error}}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="aa-product-details-area">
@@ -36,16 +53,24 @@
                 <div class="aa-product-view-slider">
                   <div id="demo-1" class="simpleLens-gallery-container">
                     <div class="simpleLens-container">
-                      <div class="simpleLens-big-image-container"><a data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-lens-image"><img src="{{productImage($product->image)}}" class="simpleLens-big-image"></a></div>
+                      <div class="simpleLens-big-image-container"><a
+                          data-lens-image="img/view-slider/large/polo-shirt-1.png" class="simpleLens-lens-image"><img
+                            src="{{productImage($product->image)}}" class="simpleLens-big-image"></a></div>
                     </div>
                     <div class="simpleLens-thumbnails-container">
-                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png" data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper" href="#">
+                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png"
+                        data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper"
+                        href="#">
                         <img src="img/view-slider/thumbnail/polo-shirt-4.png">
                       </a>
-                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png" data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper" href="#">
+                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png"
+                        data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper"
+                        href="#">
                         <img src="img/view-slider/thumbnail/polo-shirt-4.png">
                       </a>
-                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png" data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper" href="#">
+                      <a data-big-image="img/view-slider/medium/polo-shirt-4.png"
+                        data-lens-image="img/view-slider/large/polo-shirt-4.png" class="simpleLens-thumbnail-wrapper"
+                        href="#">
                         <img src="img/view-slider/thumbnail/polo-shirt-4.png">
                       </a>
                     </div>
@@ -97,7 +122,8 @@
                       <input type="hidden" name="id" value="{{$product->id}}">
                       <input type="hidden" name="name" value="{{$product->name}}">
                       <input type="hidden" name="price" value="{{$product->price}}">
-                      <button type="submit" class="aa-add-to-cart-btn" style="background:transparent; border-radius:10px;">Add To Cart</button>
+                      <button type="submit" class="aa-add-to-cart-btn"
+                        style="background:transparent; border-radius:10px;">Add To Cart</button>
                     </form>
                   </div>
                 </div>
@@ -121,8 +147,11 @@
                   <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor qui eius esse!</li>
                   <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, modi!</li>
                 </ul>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, iusto earum voluptates autem esse molestiae ipsam, atque quam amet similique ducimus aliquid voluptate perferendis, distinctio!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea, voluptas! Aliquam facere quas cumque rerum dolore impedit, dicta ducimus repellat dignissimos, fugiat, minima quaerat necessitatibus? Optio adipisci ab, obcaecati, porro unde accusantium facilis repudiandae.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, iusto earum voluptates autem esse
+                  molestiae ipsam, atque quam amet similique ducimus aliquid voluptate perferendis, distinctio!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea, voluptas! Aliquam facere
+                  quas cumque rerum dolore impedit, dicta ducimus repellat dignissimos, fugiat, minima quaerat
+                  necessitatibus? Optio adipisci ab, obcaecati, porro unde accusantium facilis repudiandae.</p>
               </div>
               <div class="tab-pane fade " id="review">
                 <div class="aa-product-review-area">
