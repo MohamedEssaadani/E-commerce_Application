@@ -4,6 +4,10 @@
 Products
 @endsection
 
+@section('extra-head')
+
+@endsection
+
 @section('content')
 <!-- product category -->
 <section id="aa-product-category">
@@ -327,4 +331,7 @@ Products
   </div>
 </section>
 <!-- / Subscribe section -->
+@endsection
+
+@section('extra-js')
 @endsection

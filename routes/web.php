@@ -50,3 +50,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/search', 'ShopController@search')->name('search');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/my-profile', 'UserController@edit')->name('user.edit');
+    Route::patch('/my-profile', 'UserController@update')->name('user.update');
+    Route::get('/user-orders', 'OrdersController@index')->name('user.orders');
+    Route::get('/user-orders/{order}', 'OrdersController@show')->name('user.orderDetail');
+});

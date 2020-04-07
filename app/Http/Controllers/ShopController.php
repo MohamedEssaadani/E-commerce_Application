@@ -133,4 +133,16 @@ class ShopController extends Controller
 
         return view('search-results')->with('products', $products);
     }
+
+
+
+    //search autocomplete
+    protected function autocomplete($query)
+    {
+        $products = Product::where('name', 'like', '%' . $query . '%')
+            ->orWhere('name', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->get();
+        return response()->json($products);
+    }
 }

@@ -98,7 +98,7 @@ Checkout
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
-                                <textarea id="address" name="address" value="{{old('address')}} cols=" 8" rows="3"
+                                <textarea id="address" name="address" value="{{old('address')}}" cols="8" rows="3"
                                   required>Address*</textarea>
                               </div>
                             </div>

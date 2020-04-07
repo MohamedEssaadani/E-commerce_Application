@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Product;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/autocomplete/{query}', 'ShopController@autocomplete');
