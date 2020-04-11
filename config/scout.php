@@ -72,20 +72,6 @@ return [
 
     'soft_delete' => false,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Algolia Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure your Algolia settings. Algolia is a cloud hosted
-    | search engine which works great with Scout out of the box. Just plug
-    | in your application ID and admin API key to get started searching.
-    |
-    */
 
-    'algolia' => [
-        'id' => env('ALGOLIA_APP_ID', ''),
-        'secret' => env('ALGOLIA_SECRET', ''),
-    ],
 
 ];
