@@ -54,3 +54,18 @@ function productImage($path)
 {
   return file_exists('storage/' . $path) ? asset('storage/' . $path) : asset('assets/img/imagenotfound.jpg');
 }
+
+//return stock level (quantity of product)
+function getStockLevel($quantity)
+{
+  if ($quantity >= setting('site.stock_threshold')) {
+    $stockLevel = '<div class="badge badge-success">In Stock</div>';
+  } else if ($quantity < setting('site.stock_threshold') && $quantity > 0) {
+    $stockLevel = '<div class="badge badge-warning">Low Stock</div>';
+  } else {
+
+    $stockLevel = '<div class="badge badge-danger">Not available</div>';
+  }
+
+  return $stockLevel;
+}

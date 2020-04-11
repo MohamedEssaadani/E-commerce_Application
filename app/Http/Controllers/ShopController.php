@@ -75,9 +75,12 @@ class ShopController extends Controller
             ->take(8)
             ->get();
 
+        $stockLevel = getStockLevel($product->quantity);
+
         return view('product-detail', [
             'product' => $product,
-            'relatedProducts' => $relatedProducts
+            'relatedProducts' => $relatedProducts,
+            'stockLevel' => $stockLevel
         ]);
     }
 

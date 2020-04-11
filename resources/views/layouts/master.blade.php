@@ -41,6 +41,7 @@
     <![endif]-->
 
   @yield('extra-head')
+
 </head>
 
 <body>

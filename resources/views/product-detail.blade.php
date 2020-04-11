@@ -4,6 +4,38 @@
 {{$product->name}}
 @endsection
 
+@section('extra-head')
+<style>
+  .badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+  }
+
+  .badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+  }
+
+  .badge-warning {
+    color: #000;
+    background-color: #ffc107;
+  }
+
+  .badge-success {
+    color: #fff;
+    background-color: #28a745;
+  }
+
+</style>
+@endsection
+
 @section('content')
 <!-- catg header banner section -->
 <section id="aa-catg-head-banner">
@@ -82,25 +114,12 @@
                 <div class="aa-product-view-content">
                   <h3>{{$product->name}}</h3>
                   <div class="aa-price-block">
-                    <span class="aa-product-view-price">{{$product->price}} </span>
-                    <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                    <span class="aa-product-view-price">${{$product->price}} </span>
+                    <div>
+                      {!! $stockLevel !!}
+                    </div>
                   </div>
                   <p>{{$product->slug}}</p>
-                  <h4>Size</h4>
-                  <div class="aa-prod-view-size">
-                    <a href="#">S</a>
-                    <a href="#">M</a>
-                    <a href="#">L</a>
-                    <a href="#">XL</a>
-                  </div>
-                  <h4>Color</h4>
-                  <div class="aa-color-tag">
-                    <a href="#" class="aa-color-green"></a>
-                    <a href="#" class="aa-color-yellow"></a>
-                    <a href="#" class="aa-color-pink"></a>
-                    <a href="#" class="aa-color-black"></a>
-                    <a href="#" class="aa-color-white"></a>
-                  </div>
                   <div class="aa-prod-quantity">
                     <form action="">
                       <select id="" name="">
@@ -116,6 +135,7 @@
                       Category: <a href="#">Polo T-Shirt</a>
                     </p>
                   </div>
+                  @if ($product->quantity > 0)
                   <div class="aa-prod-view-bottom">
                     <form action="{{route('cart.store')}}" method="POST">
                       {{csrf_field()}}
@@ -123,9 +143,11 @@
                       <input type="hidden" name="name" value="{{$product->name}}">
                       <input type="hidden" name="price" value="{{$product->price}}">
                       <button type="submit" class="aa-add-to-cart-btn"
-                        style="background:transparent; border-radius:10px;">Add To Cart</button>
+                        style="background:transparent; border-radius:10px;">Add To
+                        Cart</button>
                     </form>
                   </div>
+                  @endif
                 </div>
               </div>
             </div>
