@@ -72,7 +72,7 @@ Cart
                           href="{{route('shop.show', $item->model->slug)}}">{{$item->model->name}}</a></td>
                       <td>${{$item->model->price}}</td>
                       <td><input class="aa-cart-quantity quantity" type="number" value="{{$item->qty}}"
-                          data-id="{{$item->rowId}}"></td>
+                          data-id="{{$item->rowId}}" data-productQuantity="{{$item->model->quantity}}"></td>
                       <td>${{$item->subTotal()}}</td>
                     </tr>
                     @endforeach
@@ -272,15 +272,15 @@ Cart
     Array.from(className).forEach(function(element) {
       element.addEventListener('change', function() {
         const id = element.getAttribute('data-id');
+        const productQuantity = element.getAttribute('data-productQuantity')
         axios.patch(`/cart/${id}`, {
             quantity:  this.value,
+            productQuantity : productQuantity
           })
           .then(function(response) {
-            //console.log(response);
             window.location.href = '{{ route('cart.index') }}'
           })
           .catch(function(error) {
-            console.log(error);
             window.location.href = '{{ route('cart.index') }}'
           });
       })

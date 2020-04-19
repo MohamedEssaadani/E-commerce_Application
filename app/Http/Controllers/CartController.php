@@ -86,13 +86,17 @@ class CartController extends Controller
         $validator = Validator::make($request->all(), [
             'quantity' => 'required|numeric|between:1,10'
         ]);
-        
-        if($validator->fails())
-        {
+
+        if ($validator->fails()) {
             session()->flash('errors', collect('Quantity must be between 1 and 10!!'));
 
             return response()->json(['success' => false], 400);
-    
+        }
+
+        if ($request->quantity > $request->productQuantity) {
+            session()->flash('errors', collect('Sorry we do not have enough items in stock.'));
+
+            return response()->json(['success' => false], 400);
         }
 
         Cart::update($id, $request->quantity);

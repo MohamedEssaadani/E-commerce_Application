@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Product;
 use App\OrderProduct;
 use App\Mail\OrderPlaced;
 use Illuminate\Http\Request;
@@ -42,6 +43,11 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
+        //check for stock if there is items for a product or not
+        if ($this->productNotAvailable()) {
+            return back()->withErrors('Sorry, one of the products you have in cart is not available for now.');
+        }
+
         $contents = Cart::content()->map(function ($item) {
             return $item->model->slug . ', ' . $item->qty;
         })->values()->toJson();
@@ -65,6 +71,9 @@ class CheckoutController extends Controller
 
             //Send Mail
             Mail::send(new OrderPlaced($order));
+
+            //Update Quantity for ordered Products
+            $this->decrementQuantities();
 
             //SUCCESSFUL
             Cart::instance('default')->destroy();
@@ -172,5 +181,26 @@ class CheckoutController extends Controller
             'newTax' => $newTax,
             'newTotal' => $newTotal
         ]);
+    }
+
+    protected function productNotAvailable()
+    {
+        foreach (Cart::content() as $item) {
+            $product = Product::find($item->model->id);
+            if ($product->quantity < $item->qty)
+                return true;
+        }
+
+        return false;
+    }
+
+    protected function decrementQuantities()
+    {
+        foreach (Cart::content() as $item) {
+            $product = Product::find($item->model->id);
+            $product->quantity -= $item->qty;
+            // $product->update(['quantity' => $product->quantity - $item->qty]);
+            $product->save();
+        }
     }
 }
