@@ -225,7 +225,7 @@ Home
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
                     <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2020</span>
                   </figcaption>
                 </figure>
                 <div class="aa-blog-info">
@@ -246,7 +246,7 @@ Home
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
                     <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2020</span>
                   </figcaption>
                 </figure>
                 <div class="aa-blog-info">
@@ -267,7 +267,7 @@ Home
                     <span href="#"><i class="fa fa-eye"></i>5K</span>
                     <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
                     <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                    <span href="#"><i class="fa fa-clock-o"></i>June 26, 2020</span>
                   </figcaption>
                 </figure>
                 <div class="aa-blog-info">
