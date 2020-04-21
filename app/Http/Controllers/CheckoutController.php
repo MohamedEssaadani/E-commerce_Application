@@ -77,7 +77,7 @@ class CheckoutController extends Controller
 
             //SUCCESSFUL
             Cart::instance('default')->destroy();
-            return back()->with('success_message', 'Thank you!! your payment has been successfully accepted!!');
+            return view('thank-you');
         } catch (CardErrorException $e) {
             $this->saveOrders($request, $e->getMessage());
             return back()->withErrors('Error! ' . $e->getMessage());

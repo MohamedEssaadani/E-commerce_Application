@@ -57,3 +57,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/user-orders', 'OrdersController@index')->name('user.orders');
     Route::get('/user-orders/{order}', 'OrdersController@show')->name('user.orderDetail');
 });
+
+Route::get('/thank-you', 'ThankYouController@index')->name('thank-you.index');
