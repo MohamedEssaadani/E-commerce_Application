@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 *.css linguist-detectable=false
 *.scss linguist-detectable=false
 *.html linguist-detectable=false
 *.js linguist-detectable=false
+=======
+* text=auto
+*.html  linguist-language=Laravel
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+CHANGELOG.md export-ignore
+>>>>>>> b9da8e5... ok
