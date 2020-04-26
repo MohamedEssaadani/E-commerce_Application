@@ -18,7 +18,7 @@ Home
               <img data-seq src="{{asset('storage/'.$slide->image)}}" alt="Men slide img" />
             </div>
             <div class="seq-title">
-              <span data-seq>Save Up to 75% Off</span>
+              <span data-seq>Save Up to 75% OFF</span>
               <h2 data-seq>{{$slide->title}}</h2>
               <p data-seq>{{$slide->subtitle}}</p>
               <a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP NOW</a>
