@@ -46,14 +46,6 @@
 
 <body>
   <div id="app">
-    <!-- wpf loader Two
-        *I comment this loader when it give me problem in cart vue it load without stopping
-        <div id="wpf-loader-two">          
-          <div class="wpf-loader-two-inner">
-            <span>Loading</span>
-          </div>
-        </div> -->
-    <!-- / wpf loader Two -->
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TOP BUTTON -->
